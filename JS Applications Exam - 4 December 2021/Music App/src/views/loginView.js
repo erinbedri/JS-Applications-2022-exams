@@ -28,7 +28,11 @@ export const loginView = (ctx) => {
 
         const { email, password} = Object.fromEntries(new FormData(e.currentTarget));
 
-        console.log(email, password)
+        authService.loginTemplate(email, password)
+            .then(() => {
+                ctx.page.redirect('/');
+            })
     }
+
     ctx.render(loginTemplate(submitHandler));
 };
