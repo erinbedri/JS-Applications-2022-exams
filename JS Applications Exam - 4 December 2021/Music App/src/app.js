@@ -7,6 +7,7 @@ import { registerView } from './views/registerView.js';
 import { catalogView } from './views/catalogView.js';
 import { logoutView } from './views/logoutView.js';
 import { createView } from './views/createView.js';
+import { detailsView } from './views/detailsView.js';
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
@@ -18,6 +19,7 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/catalog', catalogView);
 page('/create', createView);
+page('/albums/:id', detailsView);
 
 
 page.start();

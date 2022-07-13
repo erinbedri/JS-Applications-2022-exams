@@ -43,7 +43,6 @@ export const catalogView = (ctx) => {
     albumService.getAll()
     .then(albums => {
         ctx.render(catalogTemplate(albums, ctx.user))
-        console.log(ctx.user)
     })
 
 };
