@@ -41,13 +41,16 @@ export const registerView = (ctx) => {
             return;
         }
 
-        authService.register(email, password)
-            .then(() => {
-                ctx.page.redirect('/');
-            })
-            .catch(err => {
-                alert(err);
-            })
+        if (email != '' && password != '') {
+            authService.register(email, password)
+                .then(() => {
+                    ctx.page.redirect('/');
+                })
+                .catch(err => {
+                    alert(err);
+                })
+        }
+
     }
 
     ctx.render(registerTemplate(submitHandler));
