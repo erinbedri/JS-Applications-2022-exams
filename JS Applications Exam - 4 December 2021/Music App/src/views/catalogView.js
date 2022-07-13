@@ -35,11 +35,8 @@ const catalogTemplate = (albums) => html`
 `;
 
 export const catalogView = (ctx) => {
-    console.log('yes')
-
     albumService.getAll()
         .then(albums => {
-            console.log(albums)
             ctx.render(catalogTemplate(albums))
     })
 
