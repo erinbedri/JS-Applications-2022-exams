@@ -21,5 +21,4 @@ page('/catalog', catalogView);
 page('/create', createView);
 page('/albums/:id', detailsView);
 
-
 page.start();

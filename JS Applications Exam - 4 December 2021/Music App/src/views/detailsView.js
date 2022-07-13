@@ -34,12 +34,8 @@ const detailsTemplate = (album, user) => html`
 `;
 
 export const detailsView = (ctx) => {
-    console.log(ctx)
-
     albumService.getAlbum(ctx.params.id)
         .then(album => {
-
-            console.log(album)
 
             ctx.render(detailsTemplate(album, ctx.user))
         })
