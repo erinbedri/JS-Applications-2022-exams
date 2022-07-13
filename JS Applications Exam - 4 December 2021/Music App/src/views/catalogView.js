@@ -2,7 +2,7 @@ import { html } from '../../node_modules/lit-html/lit-html.js';
 
 import * as albumService from '../services/albumService.js';
 
-const albumTemplate = (album) => html`
+const albumTemplate = (album, user) => html`
             <div class="card-box">
                 <img src=${album.imgUrl}>
                 <div>
@@ -13,18 +13,23 @@ const albumTemplate = (album) => html`
                         <p class="price">Price: $${album.price}</p>
                         <p class="date">Release Date: ${album.releaseDate}</p>
                     </div>
-                    <div class="btn-group">
-                        <a href="albums/${album._id}" id="details">Details</a>
-                    </div>
+                    ${user
+                        ? html`
+                            <div class="btn-group">
+                                <a href="albums/${album._id}" id="details">Details</a>
+                            </div>
+                        `
+                        : ''
+                        }
                 </div>
             </div>
 `;
 
-const catalogTemplate = (albums) => html`
+const catalogTemplate = (albums, user) => html`
     <section id="catalogPage">
         <h1>All Albums</h1>
     
-        ${albums.map(album => albumTemplate(album))}
+        ${albums.map(album => albumTemplate(album, user))}
 
         ${albums.length < 1
             ? html`<p>No Albums in Catalog!</p>`
@@ -36,8 +41,9 @@ const catalogTemplate = (albums) => html`
 
 export const catalogView = (ctx) => {
     albumService.getAll()
-        .then(albums => {
-            ctx.render(catalogTemplate(albums))
+    .then(albums => {
+        ctx.render(catalogTemplate(albums, ctx.user))
+        console.log(ctx.user)
     })
 
 };

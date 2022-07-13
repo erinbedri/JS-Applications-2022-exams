@@ -50,7 +50,6 @@ export const registerView = (ctx) => {
                     alert(err);
                 })
         }
-
     }
 
     ctx.render(registerTemplate(submitHandler));
