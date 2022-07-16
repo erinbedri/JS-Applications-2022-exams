@@ -71,7 +71,7 @@ export const editView = (ctx) => {
         }
     }
     
-    albumService.getAlbum(ctx.params.id)
+    albumService.getAlbum(id)
         .then(album => {
             ctx.render(editTemplate(album, submitHandler))
         })

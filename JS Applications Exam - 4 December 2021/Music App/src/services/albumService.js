@@ -8,26 +8,8 @@ export const getAll = () => request.get(`${baseUrl}?sortBy=_createdOn%20desc&dis
 
 export const getAlbum = (id) => request.get(`${baseUrl}/${id}`);
 
-export const create = (albumName, imageUrl, price, releaseDate, artist, genre, description) => {
-    let newAlbum = {
-        name: albumName,
-        imageUrl,
-        price,
-        releaseDate,
-        artist,
-        genre,
-        description
-    }
-
-    fetch(`${baseUrl}/data/albums`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': authService.getToken(),
-        },
-        body: JSON.stringify(newAlbum)
-    })
-        .then(res => res.json())
+export const create = (album) => {
+    request.post(`${baseUrl}`, album)
 };
 
 export const edit = (album, id) => {

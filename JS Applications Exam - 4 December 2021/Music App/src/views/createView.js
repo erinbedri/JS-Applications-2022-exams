@@ -51,10 +51,18 @@ export const createView = (ctx) => {
         let description = form.get('description');
 
         if (albumName != '' && imageUrl != '' && price != '' && releaseDate != '' && artist != '' && genre != '' && description != '') {
-            albumService.create(albumName, imageUrl, price, releaseDate, artist, genre, description)
+            let newAlbum = {
+                name: albumName,
+                imageUrl,
+                price,
+                releaseDate,
+                artist,
+                genre,
+                description
+            }
+            albumService.create(newAlbum);
             
             ctx.page.redirect('/catalog');
-
         }
     }
 
