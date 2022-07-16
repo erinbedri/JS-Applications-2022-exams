@@ -14,6 +14,6 @@ export const edit = (album, id) => {
     request.put(`${baseUrl}/${id}`, album)
 };
 
-export const delAlbum = (album, id) => {
-    request.del(`${baseUrl}/${id}`, album)
+export const delAlbum = (id) => {
+    request.del(`${baseUrl}/${id}`)
 };
