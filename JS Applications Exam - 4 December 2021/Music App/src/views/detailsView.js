@@ -22,8 +22,8 @@ const detailsTemplate = (album, user) => html`
                     ${user && album._ownerId == user._id
                         ? html`                    
                             <div class="actionBtn">
-                                <a href="#" class="edit">Edit</a>
-                                <a href="#" class="remove">Delete</a>
+                                <a href="/albums/${album._id}/edit" class="edit">Edit</a>
+                                <a href="albums/${album._id}/delete" class="remove">Delete</a>
                             </div>`
                         : ''
                     }
@@ -36,7 +36,6 @@ const detailsTemplate = (album, user) => html`
 export const detailsView = (ctx) => {
     albumService.getAlbum(ctx.params.id)
         .then(album => {
-
             ctx.render(detailsTemplate(album, ctx.user))
         })
 

@@ -8,6 +8,7 @@ import { catalogView } from './views/catalogView.js';
 import { logoutView } from './views/logoutView.js';
 import { createView } from './views/createView.js';
 import { detailsView } from './views/detailsView.js';
+import { editView } from './views/editView.js';
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
@@ -20,5 +21,6 @@ page('/logout', logoutView);
 page('/catalog', catalogView);
 page('/create', createView);
 page('/albums/:id', detailsView);
+page('/albums/:id/edit', editView);
 
 page.start();
