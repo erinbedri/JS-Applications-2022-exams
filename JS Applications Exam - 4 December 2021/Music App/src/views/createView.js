@@ -43,17 +43,17 @@ export const createView = (ctx) => {
         const form = new FormData(e.currentTarget);
 
         let albumName = form.get('name');
-        let imageUrl = form.get('imgUrl');
+        let imgUrl = form.get('imgUrl');
         let price = form.get('price');
         let releaseDate = form.get('releaseDate');
         let artist = form.get('artist');
         let genre = form.get('genre');
         let description = form.get('description');
 
-        if (albumName != '' && imageUrl != '' && price != '' && releaseDate != '' && artist != '' && genre != '' && description != '') {
+        if (albumName != '' && imgUrl != '' && price != '' && releaseDate != '' && artist != '' && genre != '' && description != '') {
             let newAlbum = {
                 name: albumName,
-                imageUrl,
+                imgUrl,
                 price,
                 releaseDate,
                 artist,
