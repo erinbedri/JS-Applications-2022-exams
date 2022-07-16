@@ -39,8 +39,36 @@ const editTemplate = (album, submitHandler) => html`
 `;
 
 export const editView = (ctx) => {
+    let id = ctx.params.id; 
+
     const submitHandler = (e) => {
         e.preventDefault();
+
+        const form = new FormData(e.currentTarget);
+
+        let albumName = form.get('name');
+        let imageUrl = form.get('imgUrl');
+        let price = form.get('price');
+        let releaseDate = form.get('releaseDate');
+        let artist = form.get('artist');
+        let genre = form.get('genre');
+        let description = form.get('description');
+
+        if (albumName != '' && imageUrl != '' && price != '' && releaseDate != '' && artist != '' && genre != '' && description != '') {
+            let editedAlbum = {
+                name: albumName,
+                imageUrl,
+                price,
+                releaseDate,
+                artist,
+                genre,
+                description
+            }
+
+            albumService.edit(editedAlbum, id)
+
+            ctx.page.redirect(`/albums/${id}`);
+        }
     }
     
     albumService.getAlbum(ctx.params.id)

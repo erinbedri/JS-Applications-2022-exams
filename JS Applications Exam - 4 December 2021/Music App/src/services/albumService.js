@@ -28,4 +28,8 @@ export const create = (albumName, imageUrl, price, releaseDate, artist, genre, d
         body: JSON.stringify(newAlbum)
     })
         .then(res => res.json())
-}
+};
+
+export const edit = (album, id) => {
+    request.put(`${baseUrl}/${id}`, album)
+};
