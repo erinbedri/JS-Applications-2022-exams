@@ -64,9 +64,6 @@ export const editView = (ctx) => {
                 genre,
                 description
             }
-
-            console.log(imgUrl)
-
             albumService.edit(editedAlbum, id)
 
             ctx.page.redirect(`/albums/${id}`);
