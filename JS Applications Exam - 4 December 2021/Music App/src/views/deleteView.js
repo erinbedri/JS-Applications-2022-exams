@@ -6,8 +6,10 @@ export const deleteView = (ctx) => {
         .then(album => {
             let isConfirmed = confirm(`Are you sure you want to delete ${album.name}?`);
 
-            albumService.delAlbum(album, ctx.params.id);
+            if (isConfirmed) {
+                albumService.delAlbum(album, ctx.params.id);
 
-            ctx.page.redirect('/catalog');
+                ctx.page.redirect('/catalog');
+            }
         })
 }
