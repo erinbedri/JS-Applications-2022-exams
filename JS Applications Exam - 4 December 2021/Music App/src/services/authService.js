@@ -44,28 +44,6 @@ export const logout = () =>
             clearUser();
         });
 
-export const create = (albumName, imageUrl, price, releaseDate, artist, genre, description) => {
-    let newAlbum = {
-        name: albumName,
-        imageUrl,
-        price,
-        releaseDate,
-        artist,
-        genre,
-        description
-    }
-
-    fetch(`${baseUrl}/data/albums`, {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json',
-            'X-Authorization': getToken(),
-        },
-        body: JSON.stringify(newAlbum)
-    })
-        .then(res => res.json())
-}
-
-const getToken = () => {
+export const getToken = () => {
     return getUser()?.accessToken;
 }

@@ -1,5 +1,5 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
-import * as authService from '../services/authService.js';
+import * as albumService from '../services/albumService.js';
 
 const createTemplate = (submitHandler) => html`
         <section class="createPage">
@@ -51,7 +51,7 @@ export const createView = (ctx) => {
         let description = form.get('description');
 
         if (albumName != '' && imageUrl != '' && price != '' && releaseDate != '' && artist != '' && genre != '' && description != '') {
-            authService.create(albumName, imageUrl, price, releaseDate, artist, genre, description)
+            albumService.create(albumName, imageUrl, price, releaseDate, artist, genre, description)
             
             ctx.page.redirect('/catalog');
 
