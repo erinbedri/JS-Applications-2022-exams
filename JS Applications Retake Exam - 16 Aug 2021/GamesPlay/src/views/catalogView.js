@@ -16,7 +16,7 @@ const catalogTemplate = (games) => html`
         <section id="catalog-page">
             <h1>All Games</h1>
 
-            ${games
+            ${games.length > 0
                 ? html`
                     ${games.map(game => gameTemplate(game))}
                 `

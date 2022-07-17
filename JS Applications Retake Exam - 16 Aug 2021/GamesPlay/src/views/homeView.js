@@ -29,7 +29,7 @@ const homeTemplate = (games) => html`
             <div id="home-page">
                 <h1>Latest Games</h1>
 
-                ${games
+                ${games.length > 0
                     ? html`
                         ${games.map(game => gameTemplate(game))}
                     `
