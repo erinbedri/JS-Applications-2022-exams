@@ -20,4 +20,6 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/create', createView);
 
+//page('/details/:id');
+
 page.start()
