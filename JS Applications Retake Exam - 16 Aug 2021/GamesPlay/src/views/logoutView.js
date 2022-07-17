@@ -1,3 +1,7 @@
+import * as authService from '../middleware/authService.js';
+
 export const logoutView = (ctx) => {
-    console.log('logout');
+    authService.logout(ctx);
+
+    ctx.page.redirect('/');
 }

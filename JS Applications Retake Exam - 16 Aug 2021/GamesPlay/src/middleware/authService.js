@@ -37,3 +37,10 @@ export const register = (email, password) =>
 
             return user;
         });
+
+export const logout = () => {
+    fetch(`${baseUrl}/users/logout`, { headers: { 'X-Authorization': getToken() } })
+        .then(() => {
+            localStorage.removeItem('user');
+        })
+}
