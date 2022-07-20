@@ -21,7 +21,7 @@ const saveUser = (user) => {
 }
 
 export const login = (email, password) => {
-    request.post(`${baseUrl}/users/login`)
+    request.post(`${baseUrl}/users/login`, {email, password})
         .then(user => {
             saveUser(user);
         })
