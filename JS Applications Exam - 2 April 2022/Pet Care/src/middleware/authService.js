@@ -17,12 +17,17 @@ export const getToken = () => {
 }
 
 const saveUser = (user) => {
-    localStorage.setItem('user', user);
+    if (user.accessToken) {
+        localStorage.setItem('user', JSON.stringify(user));
+    }
 }
 
 export const login = (email, password) => {
-    request.post(`${baseUrl}/users/login`, {email, password})
+    request.post(`${baseUrl}/users/login`, { email, password })
         .then(user => {
             saveUser(user);
-        })
-} 
+
+            return user;
+        });
+}
+
