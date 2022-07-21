@@ -1,6 +1,7 @@
 import page from '../node_modules/page/page.mjs';
 
 import { renderNavigationMiddleware, renderContentMiddleware } from './middleware/renderMiddleware.js';
+import { authMiddleware } from './middleware/authMiddleware.js';
 
 import { homeView } from './views/homeView.js';
 import { dashboardView } from './views/dashboardView.js';
@@ -12,6 +13,7 @@ import { detailsView } from './views/detailsView.js';
 import { deleteView } from './views/deleteView.js';
 import { editView } from './views/editView.js';
 
+page(authMiddleware);
 page(renderNavigationMiddleware);
 page(renderContentMiddleware);
 

@@ -27,6 +27,7 @@ const navigationTemplate = (user) => html`
 `;
 
 export const navigationView = (ctx) => {
+    console.log(ctx.user)
     return navigationTemplate(ctx.user);
 }
 
