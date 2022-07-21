@@ -1,8 +1,10 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 
-const createTemplate = () => html`
+import * as petService from '../middleware/petService.js';
+
+const createTemplate = (submitHandler) => html`
         <section id="createPage">
-            <form class="createForm">
+            <form @submit=${submitHandler} class="createForm">
                 <img src="./images/cat-create.jpg">
                 <div>
                     <h2>Create PetPal</h2>
@@ -33,5 +35,30 @@ const createTemplate = () => html`
 `;
 
 export const createView = (ctx) => {
-    ctx.render(createTemplate());
+    const submitHandler = (e) => {
+        e.preventDefault();
+
+        let form = new FormData(e.currentTarget);
+
+        let name = form.get('name');
+        let breed = form.get('breed');
+        let age = form.get('age');
+        let weight = form.get('weight');
+        let image = form.get('image');
+
+        if (name != '' && breed != '' && age != '' && weight != '' & image != '') {
+            let pet = {
+                name,
+                breed,
+                age,
+                weight,
+                image
+            }
+
+            petService.createPet(pet);
+
+            ctx.page.redirect('/dashboard');
+        }
+    }
+    ctx.render(createTemplate(submitHandler));
 }
