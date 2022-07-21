@@ -25,7 +25,7 @@ const registerTemplate = (submitHandler) => html`
                 <button class="btn" type="submit">Register</button>
         
                 <p class="field">
-                    <span>If you have profile click <a href="#">here</a></span>
+                    <span>If you have profile click <a href="/login">here</a></span>
                 </p>
             </form>
         </section>
