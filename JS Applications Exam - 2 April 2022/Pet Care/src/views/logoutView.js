@@ -1,5 +1,7 @@
-import { html } from '../../node_modules/lit-html/lit-html.js';
+import * as authService from "../middleware/authService.js";
 
 export const logoutView = (ctx) => {
-    console.log('logout');
+    authService.logout(ctx.user)
+
+    ctx.page.redirect('/');
 }

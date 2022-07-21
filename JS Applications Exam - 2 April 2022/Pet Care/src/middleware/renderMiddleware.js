@@ -10,10 +10,12 @@ const renderContext = (templateResult) => {
 
 export const renderNavigationMiddleware = (ctx, next) => {
     render(navigationView(ctx), headerElement);
+    
     next();
 }
 
 export const renderContentMiddleware = (ctx, next) => {
     ctx.render = renderContext;
+
     next();
 }
