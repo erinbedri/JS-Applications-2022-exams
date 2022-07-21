@@ -4,8 +4,15 @@ const baseUrl = 'http://localhost:3030';
 
 export const getAll = () => request.get(`${baseUrl}/data/pets?sortBy=_createdOn%20desc&distinct=name`);
 
-export const createPet = (pet) => {
-    request.post(`${baseUrl}/data/pets`, pet)
+export const createPet = (name, breed, age, weight, image) => {
+    let newPet = {
+        name, 
+        breed, 
+        age, 
+        weight, 
+        image
+    }
+    request.post(`${baseUrl}/data/pets`, newPet)
         .then(pet => {
             return pet;
         })

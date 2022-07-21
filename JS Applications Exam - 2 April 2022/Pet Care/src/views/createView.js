@@ -47,15 +47,8 @@ export const createView = (ctx) => {
         let image = form.get('image');
 
         if (name != '' && breed != '' && age != '' && weight != '' & image != '') {
-            let pet = {
-                name,
-                breed,
-                age,
-                weight,
-                image
-            }
 
-            petService.createPet(pet);
+            petService.createPet(name, breed, age, weight, image);
 
             ctx.page.redirect('/dashboard');
         }

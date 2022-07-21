@@ -12,42 +12,35 @@ export const getUser = () => {
     }
 }
 
-export const getToken = () => {
-    return getUser()?.accessToken;
-}
-
 const saveUser = (user) => {
     if (user.accessToken) {
         localStorage.setItem('user', JSON.stringify(user));
     }
 }
 
-const removeUser = () => {
-    localStorage.removeItem('user');
+export const getToken = () => {
+    return getUser()?.accessToken;
 }
 
-export const login = (email, password) => {
+export const login = (email, password) =>
     request.post(`${baseUrl}/users/login`, { email, password })
         .then(user => {
             saveUser(user);
 
             return user;
         });
-}
 
-export const register = (email, password) => {
+export const register = (email, password) =>
     request.post(`${baseUrl}/users/register`, { email, password })
         .then(user => {
             saveUser(user);
 
             return user;
         });
-}
 
 export const logout = () => {
     fetch(`${baseUrl}/users/logout`, { headers: { 'X-Authorization': getToken() } })
         .then(() => {
-            removeUser();
-        });
+            localStorage.removeItem('user');
+        })
 }
-
