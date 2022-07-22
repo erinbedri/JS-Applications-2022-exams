@@ -6,16 +6,11 @@ export const getAll = () => request.get(`${baseUrl}/data/pets?sortBy=_createdOn%
 
 export const getOne = (petId) => request.get(`${baseUrl}/data/pets/${petId}`);
 
-export const edit = (editedPet, petId) => request.put(`${baseUrl}/data/pets/${petId}`, editedPet)
+export const edit = (editedPet, petId) => request.put(`${baseUrl}/data/pets/${petId}`, editedPet);
 
-export const createPet = (name, breed, age, weight, image) => {
-    let newPet = {
-        name, 
-        breed, 
-        age, 
-        weight, 
-        image
-    }
+export const delPet = (petId) => request.del(`${baseUrl}/data/pets/${petId}`); 
+
+export const createPet = (newPet) => {
     request.post(`${baseUrl}/data/pets`, newPet)
         .then(pet => {
             return pet;

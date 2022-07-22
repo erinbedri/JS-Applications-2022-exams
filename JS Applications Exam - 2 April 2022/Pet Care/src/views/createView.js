@@ -40,17 +40,23 @@ export const createView = (ctx) => {
 
         let form = new FormData(e.currentTarget);
 
-        let name = form.get('name');
-        let breed = form.get('breed');
-        let age = form.get('age');
-        let weight = form.get('weight');
-        let image = form.get('image');
+        let newPet = {
+            name: form.get('name'),
+            breed: form.get('breed'),
+            age: form.get('age'),
+            weight: form.get('weight'),
+            image: form.get('image')
+        }
+
 
         if (name != '' && breed != '' && age != '' && weight != '' & image != '') {
-
-            petService.createPet(name, breed, age, weight, image);
-
-            ctx.page.redirect('/dashboard');
+            petService.createPet(newPet)
+                .then(() => {
+                    ctx.page.redirect('/dashboard');
+                })
+                .catch(err => {
+                    alert(err);
+                })
         }
     }
     ctx.render(createTemplate(submitHandler));
