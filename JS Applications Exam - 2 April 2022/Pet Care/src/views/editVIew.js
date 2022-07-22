@@ -40,21 +40,29 @@ export const editView = (ctx) => {
 
         let form = new FormData(e.currentTarget);
 
-        let editedPet = {
-            name: form.get('name'),
-            breed: form.get('breed'),
-            age: form.get('age'),
-            weight: form.get('weight'),
-            image: form.get('image')
-        }
+        let name = form.get('name');
+        let breed = form.get('breed');
+        let age = form.get('age');;
+        let weight = form.get('wei;ght');
+        let image = form.get('image');
 
-        petService.edit(editedPet, ctx.params.id)
-            .then(() => {
-                ctx.page.redirect(`/details/${ctx.params.id}`)
-            })
-            .catch(err => {
-                alert(err);
-            })
+        if (name != '' && breed != '' && age != '' && weight != '' && image != '') {
+            let editedPet = {
+                name,
+                breed,
+                age,
+                weight,
+                image
+            }
+    
+            petService.edit(editedPet, ctx.params.id)
+                .then(() => {
+                    ctx.page.redirect(`/details/${ctx.params.id}`)
+                })
+                .catch(err => {
+                    alert(err);
+                })
+        }
     }
 
     petService.getOne(ctx.params.id)
