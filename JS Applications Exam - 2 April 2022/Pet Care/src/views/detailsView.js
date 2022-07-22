@@ -25,7 +25,7 @@ const detailsTemplate = (pet, user) => html`
                         : nothing
                     }    
 
-                    ${!user || user._id != pet._ownerId
+                    ${user && user._id != pet._ownerId
                         ? html`
                             <a href="/donate/${pet._id}" class="donate">Donate</a>`
                         : nothing
