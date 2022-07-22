@@ -55,16 +55,13 @@ export const createView = (ctx) => {
                 image
             }
 
-
-            if (name != '' && breed != '' && age != '' && weight != '' & image != '') {
-                petService.createPet(newPet)
-                    .then(() => {
-                        ctx.page.redirect('/dashboard');
-                    })
-                    .catch(err => {
-                        alert(err);
-                    })
-            }
+            petService.createPet(newPet)
+                .then(() => {
+                    ctx.page.redirect('/dashboard');
+                })
+                .catch(err => {
+                    alert(err);
+                })
         }
         ctx.render(createTemplate(submitHandler));
     }
