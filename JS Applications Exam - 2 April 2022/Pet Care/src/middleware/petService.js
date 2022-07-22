@@ -10,9 +10,4 @@ export const edit = (editedPet, petId) => request.put(`${baseUrl}/data/pets/${pe
 
 export const delPet = (petId) => request.del(`${baseUrl}/data/pets/${petId}`); 
 
-export const createPet = (newPet) => {
-    request.post(`${baseUrl}/data/pets`, newPet)
-        .then(pet => {
-            return pet;
-        })
-}
+export const createPet = (newPet) => request.post(`${baseUrl}/data/pets`, newPet);

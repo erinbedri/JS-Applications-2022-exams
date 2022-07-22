@@ -43,7 +43,7 @@ export const createView = (ctx) => {
         let name = form.get('name');
         let breed = form.get('breed');
         let age = form.get('age');;
-        let weight = form.get('wei;ght');
+        let weight = form.get('weight');
         let image = form.get('image');
 
         if (name != '' && breed != '' && age != '' && weight != '' && image != '') {
@@ -63,6 +63,6 @@ export const createView = (ctx) => {
                     alert(err);
                 })
         }
-        ctx.render(createTemplate(submitHandler));
     }
+    ctx.render(createTemplate(submitHandler));
 }
