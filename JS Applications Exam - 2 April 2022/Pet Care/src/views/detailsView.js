@@ -18,23 +18,16 @@ const detailsTemplate = (pet, user) => html`
                     </div>
 
                     ${user && user._id == pet._ownerId
-                        ? userTemplate(pet._id)
-                        : nothing
+                        ? html`
+                            <div class="actionBtn">
+                                <a href="/edit/${pet._id}" class="edit">Edit</a>
+                                <a href="/delete/${pet._id}" class="remove">Delete</a>`
+                        : html`
+                            <a href="/donate/${pet._id}" class="donate">Donate</a>`
                     }
-
                 </div>
             </div>
         </section>
-`;
-
-const userTemplate = (petId) => html`
-                    <div class="actionBtn">
-                        <a href="/edit/${petId}" class="edit">Edit</a>
-                        <a href="/delete/${petId}" class="remove">Delete</a>
-
-                        <!--(Bonus Part) Only for no creator and user-->
-                        <a href="#" class="donate">Donate</a>
-                    </div>
 `;
 
 export const detailsView = (ctx) => {
