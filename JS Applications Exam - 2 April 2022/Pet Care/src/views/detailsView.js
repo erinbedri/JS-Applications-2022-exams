@@ -44,4 +44,7 @@ export const detailsView = (ctx) => {
         .then(pet => {
             ctx.render(detailsTemplate(pet, ctx.user));
         })
+        .catch(err => {
+            alert(err);
+        })
 }

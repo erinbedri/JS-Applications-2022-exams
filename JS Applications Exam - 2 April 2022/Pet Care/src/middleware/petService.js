@@ -6,6 +6,8 @@ export const getAll = () => request.get(`${baseUrl}/data/pets?sortBy=_createdOn%
 
 export const getOne = (petId) => request.get(`${baseUrl}/data/pets/${petId}`);
 
+export const edit = (editedPet, petId) => request.put(`${baseUrl}/data/pets/${petId}`, editedPet)
+
 export const createPet = (name, breed, age, weight, image) => {
     let newPet = {
         name, 
