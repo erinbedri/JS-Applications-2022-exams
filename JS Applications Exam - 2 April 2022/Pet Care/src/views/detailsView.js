@@ -22,9 +22,15 @@ const detailsTemplate = (pet, user) => html`
                             <div class="actionBtn">
                                 <a href="/edit/${pet._id}" class="edit">Edit</a>
                                 <a href="/delete/${pet._id}" class="remove">Delete</a>`
-                        : html`
+                        : nothing
+                    }    
+
+                    ${!user || user._id != pet._ownerId
+                        ? html`
                             <a href="/donate/${pet._id}" class="donate">Donate</a>`
-                    }
+                        : nothing
+                    } 
+
                 </div>
             </div>
         </section>
