@@ -12,7 +12,7 @@ const api = {
 
 export const getAll = () => request.get(baseUrl + api.allBooks);
 
-export const getAllMyBooks = (user) => request.get(baseUrl + `/data/books?where=_ownerId%3D%22${user._id}%22&sortBy=_createdOn%20desc`);
+export const getAllMyBooks = (userId) => request.get(baseUrl + `/data/books?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
 
 export const getOne = (bookId) => request.get(baseUrl + api.oneBook + `${bookId}`);
 

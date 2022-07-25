@@ -5,7 +5,7 @@ import * as bookService from '../middleware/bookService.js';
 const bookTemplate = (book) => html`
                 <li class="otherBooks">
                     <h3>${book.title}</h3>
-                    <p>Type: Fiction</p>
+                    <p>Type: ${book.type}</p>
                     <p class="img"><img src=${book.imageUrl}></p>
                     <a class="button" href="/details/${book._id}">Details</a>
                 </li>
@@ -16,12 +16,12 @@ const noBookTemplate = () => html`
 `;
 
 const catalogTemplate = (books) => html`
-        <section id="dashboard-page" class="dashboard">
-            <h1>Dashboard</h1>
+        <section id="my-books-page" class="my-books">
+            <h1>My Books</h1>
 
-            ${books.length > 1
+            ${books.length > 0
                 ? html`
-                    <ul class="other-books-list">
+                    <ul class="my-books-list">
 
                     ${books.map(b => bookTemplate(b))}
 
@@ -33,7 +33,9 @@ const catalogTemplate = (books) => html`
 `;
 
 export const catalogView = (ctx) => {
-    bookService.getAllMyBooks(ctx.user)
+    console.log(ctx.user._id)
+
+    bookService.getAllMyBooks(ctx.user._id)
         .then(books => {
             ctx.render(catalogTemplate(books));
         })
