@@ -24,6 +24,10 @@ const saveUser = (user) => {
     }
 }
 
+const removeUser = () => {
+    localStorage.removeItem('user');
+}
+
 export const getToken = () => {
     return getUser()?.accessToken;
 }
@@ -49,6 +53,6 @@ export const register = (email, password) => {
 export const logout = () => {
     fetch(baseUrl + api.logout, { headers: { 'X-Authorization': getToken() } })
         .then(() => {
-            localStorage.removeItem('user');
+            removeUser();
         })
 }
