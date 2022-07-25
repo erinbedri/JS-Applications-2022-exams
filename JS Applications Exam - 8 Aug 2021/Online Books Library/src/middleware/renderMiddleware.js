@@ -1,8 +1,8 @@
 import { render } from '../../node_modules/lit-html/lit-html.js';
 import { navigationView } from '../views/navigationView.js';
 
-const headerElement = document.querySelector('.site-header');
-const contentElement = document.querySelector('.site-content');
+const headerElement = document.getElementById('site-header');
+const contentElement = document.getElementById('site-content');
 
 const renderContext = (templateResult) => {
     render(templateResult, contentElement);
