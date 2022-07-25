@@ -6,6 +6,7 @@ import { renderNavigationMiddleware, renderContentMiddleware } from '../src/midd
 import { homeView } from '../src/views/homeView.js';
 import { loginView } from './views/loginView.js';
 import { registerView } from './views/registerView.js';
+import { logoutView } from './views/logoutView.js';
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
@@ -14,5 +15,6 @@ page(renderContentMiddleware);
 page('/', homeView);
 page('/login', loginView);
 page('/register', registerView);
+page('/logout', logoutView);
 
 page.start();
