@@ -1,10 +1,14 @@
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 
-import * as bookService from '../middleware/bookservice.js';
+import * as bookService from '../middleware/bookService.js';
 
 const userDetails = (book) => html`
         <a class="button" href="/delete/${book._id}">Delete</a>
         <a class="button" href="/edit/${book._id}">Edit</a>
+`;
+
+const likeButton = () => html`
+        <a class="button" href="#">Like</a>
 `;
 
 const detailsTemplate = (user, book) => html`
@@ -20,9 +24,13 @@ const detailsTemplate = (user, book) => html`
                         : nothing
                     }
 
+
                     <!-- Bonus -->
-                    <!-- Like button ( Only for logged-in users, which is not creators of the current book ) -->
-                    <a class="button" href="#">Like</a>
+                    
+                    ${user && user._id != book._ownerId
+                        ? likeButton()
+                        : nothing
+                    }
 
                     <!-- ( for Guests and Users )  -->
                     <div class="likes">

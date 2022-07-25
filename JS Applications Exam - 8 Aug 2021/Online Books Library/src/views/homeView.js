@@ -4,7 +4,7 @@ import * as bookService from '../middleware/bookService.js';
 
 const bookTemplate = (book) => html`
                 <li class="otherBooks">
-                    <h3>A Court of Thorns and Roses</h3>
+                    <h3>${book.title}</h3>
                     <p>Type: Fiction</p>
                     <p class="img"><img src=${book.imageUrl}></p>
                     <a class="button" href="/details/${book._id}">Details</a>
