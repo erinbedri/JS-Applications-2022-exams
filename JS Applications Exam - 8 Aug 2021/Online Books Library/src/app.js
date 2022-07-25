@@ -10,6 +10,9 @@ import { logoutView } from './views/logoutView.js';
 import { detailsView } from './views/detailsView.js';
 import { createView } from './views/createView.js';
 import { editView } from './views/editView.js';
+import { deleteView } from './views/deleteView.js';
+
+
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
