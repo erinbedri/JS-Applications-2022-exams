@@ -9,6 +9,7 @@ import { registerView } from './views/registerView.js';
 import { logoutView } from './views/logoutView.js';
 import { detailsView } from './views/detailsView.js';
 import { createView } from './views/createView.js';
+import { editView } from './views/editView.js';
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
@@ -20,5 +21,7 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/details/:id', detailsView);
 page('/create', createView);
+page('/edit/:id', editView);
+page('/delete/:id', deleteView);
 
 page.start();
