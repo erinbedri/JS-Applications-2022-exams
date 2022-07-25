@@ -8,7 +8,7 @@ const userDetails = (book) => html`
 `;
 
 const likeButton = () => html`
-        <a class="button" href="#">Like</a>
+        <a class="button" href="/like">Like</a>
 `;
 
 const detailsTemplate = (user, book) => html`
