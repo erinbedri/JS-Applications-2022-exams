@@ -36,7 +36,8 @@ export const loginView = (ctx) => {
 
         if (email != '' && password != '') {
             authService.login(email, password)
-                .then(() => {
+                .then((user) => {
+                    console.log(user)
                     ctx.page.redirect('/');
                 })
                 .catch(err => {

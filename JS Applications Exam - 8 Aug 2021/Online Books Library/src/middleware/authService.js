@@ -32,23 +32,23 @@ export const getToken = () => {
     return getUser()?.accessToken;
 }
 
-export const login = (email, password) => {
+export const login = (email, password) =>
     request.post(baseUrl + api.login, { email, password })
         .then(user => {
             saveUser(user);
 
-            return user;
-        })
-}
+            console.log(user)
 
-export const register = (email, password) => {
+            return user;
+        });
+
+export const register = (email, password) =>
     request.post(baseUrl + api.register, { email, password })
         .then(user => {
             saveUser(user);
 
             return user;
-        })
-}
+        });
 
 export const logout = () => {
     fetch(baseUrl + api.logout, { headers: { 'X-Authorization': getToken() } })
