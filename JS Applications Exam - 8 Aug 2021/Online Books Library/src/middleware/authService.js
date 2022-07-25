@@ -37,8 +37,6 @@ export const login = (email, password) =>
         .then(user => {
             saveUser(user);
 
-            console.log(user)
-
             return user;
         });
 
