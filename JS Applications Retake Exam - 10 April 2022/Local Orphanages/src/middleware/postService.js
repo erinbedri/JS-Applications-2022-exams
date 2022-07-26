@@ -10,8 +10,4 @@ export const getOne = (postId) => request.get(`${baseUrl}/data/posts/${postId}`)
 
 export const edit = (editedPost, postId) => request.put(`${baseUrl}/data/posts/${postId}`, editedPost);
 
-/*
-
-export const delPet = (petId) => request.del(`${baseUrl}/data/pets/${petId}`); 
-
-*/
+export const del = (postId) => request.del(`${baseUrl}/data/posts/${postId}`); 

@@ -11,8 +11,9 @@ import { logoutView } from './views/logoutView.js';
 import { registerView } from './views/registerView.js';
 import { detailsView } from './views/detailsView.js';
 import { editView } from './views/editView.js';
-/*
 import { deleteView } from './views/deleteView.js';
+
+/*
 import { donateView } from './views/donateView.js';
 */
 
@@ -28,9 +29,9 @@ page('/logout', logoutView);
 page('/register', registerView);
 page('/details/:id', detailsView);
 page('/edit/:id', editView);
+page('/delete/:id', deleteView);
 
 /*
-page('/delete/:id', deleteView);
 page('/donate/:id', donateView)
 */
 
