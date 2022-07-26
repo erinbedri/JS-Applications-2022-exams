@@ -11,3 +11,5 @@ export const getOne = (postId) => request.get(`${baseUrl}/data/posts/${postId}`)
 export const edit = (editedPost, postId) => request.put(`${baseUrl}/data/posts/${postId}`, editedPost);
 
 export const del = (postId) => request.del(`${baseUrl}/data/posts/${postId}`); 
+
+export const getMyPosts = (userId) => request.get(`${baseUrl}/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
