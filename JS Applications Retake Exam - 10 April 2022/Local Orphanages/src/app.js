@@ -10,9 +10,9 @@ import { loginView } from './views/loginView.js';
 import { logoutView } from './views/logoutView.js';
 import { registerView } from './views/registerView.js';
 import { detailsView } from './views/detailsView.js';
+import { editView } from './views/editView.js';
 /*
 import { deleteView } from './views/deleteView.js';
-import { editView } from './views/editView.js';
 import { donateView } from './views/donateView.js';
 */
 
@@ -27,9 +27,10 @@ page('/login', loginView);
 page('/logout', logoutView);
 page('/register', registerView);
 page('/details/:id', detailsView);
+page('/edit/:id', editView);
+
 /*
 page('/delete/:id', deleteView);
-page('/edit/:id', editView);
 page('/donate/:id', donateView)
 */
 

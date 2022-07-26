@@ -49,7 +49,6 @@ const detailsTemplate = (user, post) => html`
 export const detailsView = (ctx) => {
     postService.getOne(ctx.params.id)
         .then(post => {
-            console.log(post)
             ctx.render(detailsTemplate(ctx.user, post));
         })
         .catch(err => {
