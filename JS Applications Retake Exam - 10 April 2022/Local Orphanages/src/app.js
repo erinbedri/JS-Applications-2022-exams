@@ -9,8 +9,8 @@ import { createView } from './views/createView.js';
 import { loginView } from './views/loginView.js';
 import { logoutView } from './views/logoutView.js';
 import { registerView } from './views/registerView.js';
-/*
 import { detailsView } from './views/detailsView.js';
+/*
 import { deleteView } from './views/deleteView.js';
 import { editView } from './views/editView.js';
 import { donateView } from './views/donateView.js';
@@ -26,8 +26,8 @@ page('/create', createView);
 page('/login', loginView);
 page('/logout', logoutView);
 page('/register', registerView);
-/*
 page('/details/:id', detailsView);
+/*
 page('/delete/:id', deleteView);
 page('/edit/:id', editView);
 page('/donate/:id', donateView)

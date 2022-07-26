@@ -6,8 +6,8 @@ export const getAll = () => request.get(`${baseUrl}/data/posts?sortBy=_createdOn
 
 export const create = (newPost) => request.post(`${baseUrl}/data/posts`, newPost);
 
+export const getOne = (postId) => request.get(`${baseUrl}/data/posts/${postId}`);
 /*
-export const getOne = (petId) => request.get(`${baseUrl}/data/pets/${petId}`);
 
 export const edit = (editedPet, petId) => request.put(`${baseUrl}/data/pets/${petId}`, editedPet);
 
