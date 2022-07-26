@@ -15,13 +15,13 @@ const guestView = html`
             </div>
 `;
 
-export const navigationView = (user) => html`
+export const navigationView = (ctx) => html`
             <h1><a href="/">Orphelp</a></h1>
 
             <nav>
                 <a href="/">Dashboard</a>
 
-                ${user
+                ${ctx.user
                     ? userView
                     : guestView
                 }
