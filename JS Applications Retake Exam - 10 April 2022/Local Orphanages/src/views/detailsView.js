@@ -1,6 +1,7 @@
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 
 import * as postService from '../middleware/postService.js';
+import { post } from '../middleware/requester.js';
 
 const creatorTemplate = (post) => html`
             <a href="/edit/${post._id}" class="edit-btn btn">Edit</a>
@@ -8,10 +9,10 @@ const creatorTemplate = (post) => html`
 `;
 
 const donateTemplate = (post) => html`
-            <a href="/donate/${post._id}" class="donate-btn btn">Donate</a>
+            <a @click=${onClick(post._id)} href="#" class="donate-btn btn">Donate</a>
 `;
 
-const detailsTemplate = (user, post) => html`
+const detailsTemplate = (user, post, postDonations, hasDonated) => html`
         <section id="details-page">
             <h1 class="title">Post Details</h1>
 
@@ -25,7 +26,7 @@ const detailsTemplate = (user, post) => html`
                         <p class="post-description">Description: ${post.description}</p>
                         <p class="post-address">Address: ${post.address}</p>
                         <p class="post-number">Phone number: ${post.phone}</p>
-                        <p class="donate-Item">Donate Materials: 0</p>
+                        <p class="donate-Item">Donate Materials: ${postDonations}</p>
 
                         <div class="btns">
 
@@ -34,7 +35,7 @@ const detailsTemplate = (user, post) => html`
                                 : nothing 
                             }
 
-                            ${user
+                            ${user && user._id != post._ownerId && !hasDonated
                                 ? donateTemplate(post)
                                 : nothing
                             }
@@ -47,10 +48,38 @@ const detailsTemplate = (user, post) => html`
 `;
 
 export const detailsView = (ctx) => {
+    let postDonations;
+    postService.donationCount(ctx.params.id)
+        .then(count => {
+            console.log(count)
+
+            postDonations = count;
+        })
+        .catch(err => {
+            alert(err);
+        })
+
+    let hasDonated;
+    postService.hasDonated(ctx.user._id, ctx.params.id)
+        .then(result => {
+            console.log(result)
+            hasDonated = result;
+        })
+        .catch(err => {
+            alert(err);
+        })
+
     postService.getOne(ctx.params.id)
         .then(post => {
-            ctx.render(detailsTemplate(ctx.user, post));
+            ctx.render(detailsTemplate(ctx.user, post, postDonations, hasDonated));
         })
+        .catch(err => {
+            alert(err);
+        })
+}
+
+function onClick(postId) {
+    postService.donate(postId)
         .catch(err => {
             alert(err);
         })
