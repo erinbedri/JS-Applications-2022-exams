@@ -51,8 +51,6 @@ export const detailsView = (ctx) => {
     let postDonations;
     postService.donationCount(ctx.params.id)
         .then(count => {
-            console.log(count)
-
             postDonations = count;
         })
         .catch(err => {
