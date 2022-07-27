@@ -44,9 +44,9 @@ export const searchView = (ctx) => {
     const clickHandler = (e) => {
         e.preventDefault();
 
-        let query = document.getElementById('search-input');
+        let query = document.getElementById('search-input').value;
     
-        carService.search(encodeURIComponent(query.value))
+        carService.search(encodeURIComponent(query))
             .then(cars => {
                 ctx.render(searchTemplate(cars, clickHandler))
             })
