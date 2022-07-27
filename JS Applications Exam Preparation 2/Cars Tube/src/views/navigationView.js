@@ -3,7 +3,7 @@ import {html} from '../../node_modules/lit-html/lit-html.js';
 const userView = (username) => html`
             <div id="profile">
                 <a>Welcome <b>${username}</b></a>
-                <a href="/mycatalog">My Listings</a>
+                <a href="/myCatalog">My Listings</a>
                 <a href="/create">Create Listing</a>
                 <a href="/logout">Logout</a>
             </div>
