@@ -4,8 +4,8 @@ import { renderNavigationMiddleware, renderContentMiddleware } from './middlewar
 import { authMiddleware } from './middleware/authMiddleware.js';
 
 import { homeView } from './views/homeView.js';
-/*
 import { loginView } from './views/loginView.js';
+/*
 import { registerView } from './views/registerView.js';
 import { logoutView } from './views/logoutView.js';
 import { catalogView } from './views/catalogView.js';
@@ -22,8 +22,8 @@ page(renderNavigationMiddleware);
 page(renderContentMiddleware);
 
 page('/', homeView);
-/*
 page('/login', loginView);
+/*
 page('/register', registerView);
 page('/logout', logoutView);
 page('/catalog', catalogView);

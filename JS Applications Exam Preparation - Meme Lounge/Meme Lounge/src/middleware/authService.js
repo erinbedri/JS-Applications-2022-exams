@@ -22,8 +22,8 @@ export const getToken = () => {
     return getUser()?.accessToken;
 }
 
-export const login = (username, password) =>
-    request.post(`${baseUrl}/users/login`, { username, password })
+export const login = (email, password) =>
+    request.post(`${baseUrl}/users/login`, { email, password })
         .then(user => {
             saveUser(user);
 
