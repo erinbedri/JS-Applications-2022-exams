@@ -30,8 +30,8 @@ export const login = (username, password) =>
             return user;
         })
 
-export const register = (email, password) =>
-    request.post(`${baseUrl}/users/register`, { email, password })
+export const register = (username, password) =>
+    request.post(`${baseUrl}/users/register`, { username, password })
         .then(user => {
             saveUser(user);
 

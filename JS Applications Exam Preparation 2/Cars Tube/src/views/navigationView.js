@@ -1,8 +1,8 @@
 import {html} from '../../node_modules/lit-html/lit-html.js';
 
-const userView = html`
+const userView = (username) => html`
             <div id="profile">
-                <a>Welcome username</a>
+                <a>Welcome <b>${username}</b></a>
                 <a href="/mycatalog">My Listings</a>
                 <a href="/create">Create Listing</a>
                 <a href="/logout">Logout</a>
@@ -23,7 +23,7 @@ export const navigationView = (ctx) => html`
                 <a href="/search">By Year</a>
 
                 ${ctx.user
-                    ? userView
+                    ? userView(ctx.user.username)
                     : guestView
                 }
 
