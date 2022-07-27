@@ -53,9 +53,9 @@ export const createView = (ctx) => {
         if (newCar.brand != '' &&
             newCar.model != '' &&
             newCar.description != '' &&
-            newCar.year != '' &&
+            newCar.year != '' && Number(newCar.year) > 0 &&
             newCar.imageUrl != '' &&
-            newCar.price != ''
+            newCar.price != '' && Number(newCar.price) > 0
         ) {
             carService.create(newCar)
                 .then(() => {

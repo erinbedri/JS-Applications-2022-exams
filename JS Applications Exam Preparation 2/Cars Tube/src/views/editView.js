@@ -54,9 +54,9 @@ export const editView = (ctx) => {
         if (editedCar.brand != '' &&
             editedCar.model != '' &&
             editedCar.description != '' &&
-            editedCar.year != '' &&
+            editedCar.year != '' && Number(editedCar.year) > 0 &&
             editedCar.imageUrl != '' &&
-            editedCar.price != ''
+            editedCar.price != '' && Number(editedCar.price) > 0
         ) {
             carService.edit(editedCar, carId)
                 .then(() => {
