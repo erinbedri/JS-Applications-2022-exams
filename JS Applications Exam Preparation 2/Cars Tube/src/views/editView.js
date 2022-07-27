@@ -46,9 +46,9 @@ export const editView = (ctx) => {
             brand: form.get('brand'),
             model: form.get('model'),
             description: form.get('description'),
-            year: form.get('year'),
+            year: Number(form.get('year')),
             imageUrl: form.get('imageUrl'),
-            price: form.get('price')
+            price: Number(form.get('price'))
         }
 
         if (editedCar.brand != '' &&

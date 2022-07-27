@@ -13,6 +13,7 @@ import { detailsView } from './views/detailsView.js';
 import { editView } from './views/editView.js';
 import { deleteView } from './views/deleteView.js';
 import { myCatalogView } from './views/myCatalogView.js';
+import { searchView } from './views/searchView.js';
 
 page(authMiddleware);
 page(renderNavigationMiddleware);
@@ -28,5 +29,6 @@ page('/details/:id', detailsView);
 page('/edit/:id', editView);
 page('/delete/:id', deleteView);
 page('/myCatalog', myCatalogView);
+page('/search', searchView);
 
 page.start()

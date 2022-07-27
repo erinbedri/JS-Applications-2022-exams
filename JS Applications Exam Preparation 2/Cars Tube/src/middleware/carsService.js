@@ -9,6 +9,7 @@ const api = {
     getAllMyListings: (id) => `/data/cars?where=_ownerId%3D%22${id}%22&sortBy=_createdOn%20desc`,
     edit: (id) => `/data/cars/${id}`,
     delete: (id) => `/data/cars/${id}`,
+    search: (query) => `/data/cars?where=year%3D${query}`
 }
 
 export const getAll = () => request.get(baseUrl + api.getAll);
@@ -21,15 +22,6 @@ export const getOne = (carId) => request.get(baseUrl + api.getOne(carId));
 
 export const edit = (editedCar, carId) => request.put(baseUrl + api.edit(carId), editedCar);
 
-export const del = (carId) => request.del(baseUrl + api.delete(carId)); 
+export const del = (carId) => request.del(baseUrl + api.delete(carId));
 
-
-/*
-export const getMyPosts = (userId) => request.get(`${baseUrl}/data/posts?where=_ownerId%3D%22${userId}%22&sortBy=_createdOn%20desc`);
-
-export const hasDonated = (userId, postId) => request.get(`${baseUrl}/data/donations?where=postId%3D%22${postId}%22%20and%20_ownerId%3D%22${userId}%22&count`);
-
-export const donationCount = (postId) => request.get(`${baseUrl}/data/donations?where=postId%3D%22${postId}%22&distinct=_ownerId&count`);
-
-export const donate = (postId) => request.post(`${baseUrl}/data/donations`, { postId });
-*/
+export const search = (query) => request.get(baseUrl + api.search(query));

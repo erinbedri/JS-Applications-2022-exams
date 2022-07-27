@@ -20,26 +20,43 @@ const listingTemplate = (car) => html`
                 </div>
 `;
 
-const myCatalogTemplate = (cars) => html`
-        <section id="my-listings">
-            <h1>My car listings</h1>
+const searchTemplate = (cars, clickHandler) => html`
+        <section id="search-cars">
+            <h1>Filter by year</h1>
+
+            <div class="container">
+                <input id="search-input" type="text" name="search" placeholder="Enter desired production year">
+                <button @click=${clickHandler} class="button-list">Search</button>
+            </div>
+
+            <h2>Results: ${cars.lenght}</h2>
             <div class="listings">
 
                 ${cars.length > 0
                     ? html`${cars.map(c => listingTemplate(c))}`
-                    : html`<p class="no-cars"> You haven't listed any cars yet.</p>`
+                    : html`<p class="no-cars"> No results.</p>`
                 }
 
-            </div>
         </section>
 `;
 
-export const myCatalogView = (ctx) => {
-    carService.getAllMyListings(ctx.user._id)
+export const searchView = (ctx) => {
+    const clickHandler = (e) => {
+        e.preventDefault();
+
+        let query = document.getElementById('search-input');
+    
+        carService.search(encodeURIComponent(query.value))
+            .then(cars => {
+                ctx.render(searchTemplate(cars, clickHandler))
+            })
+            .catch(err => {
+                alert(err);
+            })
+    }
+
+    carService.getAll()
         .then(cars => {
-            ctx.render(myCatalogTemplate(cars));
-        })
-        .catch(err => {
-            alert(err);
+            ctx.render(searchTemplate(cars, clickHandler))
         })
 }
