@@ -38,7 +38,6 @@ export const detailsView = (ctx) => {
 
     carService.getOne(carId)
         .then(car => {
-            console.log(car)
             ctx.render(detailsTemplate(ctx.user, car));
         })
         .catch(err => {
