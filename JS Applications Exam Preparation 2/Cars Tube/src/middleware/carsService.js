@@ -5,15 +5,16 @@ const baseUrl = 'http://localhost:3030';
 const api = {
     getAll: '/data/cars?sortBy=_createdOn%20desc',
     create: '/data/cars',
+    getOne(carId) { return `/data/cars/${carId}` },
 }
 
 export const getAll = () => request.get(baseUrl + api.getAll);
 
 export const create = (newCar) => request.post(baseUrl + api.create, newCar);
 
+export const getOne = (carId) => request.get(baseUrl + api.getOne(carId));
 /*
 
-export const getOne = (postId) => request.get(`${baseUrl}/data/posts/${postId}`);
 
 export const edit = (editedPost, postId) => request.put(`${baseUrl}/data/posts/${postId}`, editedPost);
 
