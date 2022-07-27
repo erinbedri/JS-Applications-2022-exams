@@ -1,9 +1,10 @@
 import {html} from '../../node_modules/lit-html/lit-html.js';
 
 const userView = html`
-            <div id="user">
-                <a href="/catalog">My Posts</a>
-                <a href="/create">Create Post</a>
+            <div id="profile">
+                <a>Welcome username</a>
+                <a href="/mycatalog">My Listings</a>
+                <a href="/create">Create Listing</a>
                 <a href="/logout">Logout</a>
             </div>
 `;
@@ -16,10 +17,10 @@ const guestView = html`
 `;
 
 export const navigationView = (ctx) => html`
-            <h1><a href="/">Orphelp</a></h1>
-
             <nav>
-                <a href="/">Dashboard</a>
+                <a class="active" href="/">Home</a>
+                <a href="/catalog">All Listings</a>
+                <a href="/search">By Year</a>
 
                 ${ctx.user
                     ? userView
