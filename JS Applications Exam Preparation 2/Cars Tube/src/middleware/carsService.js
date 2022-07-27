@@ -4,13 +4,14 @@ const baseUrl = 'http://localhost:3030';
 
 const api = {
     getAll: '/data/cars?sortBy=_createdOn%20desc',
+    create: '/data/cars',
 }
 
 export const getAll = () => request.get(baseUrl + api.getAll);
 
-/*
+export const create = (newCar) => request.post(baseUrl + api.create, newCar);
 
-export const create = (newPost) => request.post(`${baseUrl}/data/posts`, newPost);
+/*
 
 export const getOne = (postId) => request.get(`${baseUrl}/data/posts/${postId}`);
 
