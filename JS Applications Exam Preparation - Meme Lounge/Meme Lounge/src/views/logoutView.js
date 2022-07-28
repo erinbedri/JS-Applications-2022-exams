@@ -1,4 +1,4 @@
-import * as authService from '../middleware/authService.js';
+import * as authService from '../services/authService.js';
 
 export const logoutView = (ctx) => {
     authService.logout(ctx)

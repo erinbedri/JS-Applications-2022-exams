@@ -1,6 +1,6 @@
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 const editTemplate = (submitHandler, meme) => html`
         <section id="edit-meme">

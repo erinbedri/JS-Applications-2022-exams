@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 
-import * as authService from '../middleware/authService.js';
+import * as authService from '../services/authService.js';
 
 const loginTemplate = (submitHandler) => html`
         <section id="login">
@@ -34,7 +34,7 @@ export const loginView = (ctx) => {
                     ctx.page.redirect('/catalog');
                 })
                 .catch(err => {
-                    alert(err);
+                    alert(err.message)
                 })
         }
     }

@@ -1,6 +1,6 @@
 import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 const userControlsTemplate = (ctx, memeId) => html`
                     <a class="button warning" href="/edit/${memeId}">Edit</a>

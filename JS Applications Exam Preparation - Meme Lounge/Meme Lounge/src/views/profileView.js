@@ -1,10 +1,10 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 const memeTemplate = (meme) => html`
                 <div class="user-meme">
-                    <p class="user-meme-title">${meme._id}</p>
+                    <p class="user-meme-title">${meme.title}</p>
                     <img class="userProfileImage" alt="meme-img" src=${meme.imageUrl}>
                     <a class="button" href="/details/${meme._id}">Details</a>
                 </div>
@@ -15,7 +15,7 @@ const profileTemplate = (user, memes) => html`
             <article class="user-info">
                 <img id="user-avatar-url" alt="user-profile" src="/images/${user.gender}.png">
                 <div class="user-content">
-                    <p>Username: ${user.name}</p>
+                    <p>Username: ${user.username}</p>
                     <p>Email: ${user.email}</p>
                     <p>My memes count: ${memes.length}</p>
                 </div>

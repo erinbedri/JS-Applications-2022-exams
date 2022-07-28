@@ -1,4 +1,5 @@
-import * as request from './requester.js'
+import * as request from '../middleware/requester.js'
+import { errorView } from './errorService.js';
 
 const baseUrl = 'http://localhost:3030';
 
@@ -32,7 +33,6 @@ export const login = (email, password) =>
     request.post(baseUrl + api.login, { email, password })
         .then(user => {
             saveUser(user);
-
             return user;
         })
 

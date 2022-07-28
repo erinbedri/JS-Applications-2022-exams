@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 const createTemplate = (submitHandler) => html`
         <section id="create-meme">

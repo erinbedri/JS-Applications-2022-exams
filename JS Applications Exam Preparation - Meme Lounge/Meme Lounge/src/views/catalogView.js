@@ -1,6 +1,6 @@
 import { html } from '../../node_modules/lit-html/lit-html.js';
 
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 const memeTemplate = (meme) => html`
                 <div class="meme">
@@ -32,7 +32,7 @@ const catalogTemplate = (memes) => html`
 
 export const catalogView = (ctx) => {
     memeService.getAll()
-        .then((memes) => {
+        .then(memes => {
             ctx.render(catalogTemplate(memes));
         })
         .catch(err => {

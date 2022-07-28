@@ -1,4 +1,4 @@
-import * as memeService from '../middleware/memeService.js';
+import * as memeService from '../services/memeService.js';
 
 export const deleteView = (ctx) => {
     let memeId = ctx.params.id;
