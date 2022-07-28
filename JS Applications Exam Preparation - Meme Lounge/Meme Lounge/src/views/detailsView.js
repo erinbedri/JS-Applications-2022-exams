@@ -2,12 +2,12 @@ import { html, nothing } from '../../node_modules/lit-html/lit-html.js';
 
 import * as memeService from '../middleware/memeService.js';
 
-const userControlsTemplate = (memeId) => html`
+const userControlsTemplate = (ctx, memeId) => html`
                     <a class="button warning" href="/edit/${memeId}">Edit</a>
-                    <button data-id=${memeId} @click=${deleteHandler} class="button danger">Delete</button>
+                    <a class="button danger" href="/delete/${memeId}">Delete</a>
 `;
 
-const detailsTemplate = (user, meme) => html`
+const detailsTemplate = (ctx, user, meme) => html`
         <section id="meme-details">
             <h1>Meme Title: ${meme.title}</h1>
             <div class="meme-details">
@@ -19,7 +19,7 @@ const detailsTemplate = (user, meme) => html`
                     <p>${meme.description}</p>
 
                     ${user && user._id == meme._ownerId
-                        ? userControlsTemplate(meme._id)
+                        ? userControlsTemplate(ctx, meme._id)
                         : nothing
                     }
                     
@@ -28,17 +28,12 @@ const detailsTemplate = (user, meme) => html`
         </section>
 `;
 
-
-const deleteHandler = () => {
-    console.log('here comes detele')
-}
-
 export const detailsView = (ctx) => {
     let memeId = ctx.params.id;
 
     memeService.getOne(memeId)
         .then(meme => {
-            ctx.render(detailsTemplate(ctx.user, meme));
+            ctx.render(detailsTemplate(ctx, ctx.user, meme));
         })
         .catch(err => {
             alert(err);

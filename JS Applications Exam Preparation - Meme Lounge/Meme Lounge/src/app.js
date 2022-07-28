@@ -10,9 +10,9 @@ import { logoutView } from './views/logoutView.js';
 import { createView } from './views/createView.js';
 import { catalogView } from './views/catalogView.js';
 import { detailsView } from './views/detailsView.js';
+import { deleteView } from './views/deleteView.js';
 /*
 import { editView } from './views/editView.js';
-import { deleteView } from './views/deleteView.js';
 import { myCatalogView } from './views/myCatalogView.js';
 import { searchView } from './views/searchView.js';
 */
@@ -28,9 +28,9 @@ page('/logout', logoutView);
 page('/create', createView);
 page('/catalog', catalogView);
 page('/details/:id', detailsView);
+page('/delete/:id', deleteView);
 /*
 page('/edit/:id', editView);
-page('/delete/:id', deleteView);
 page('/myCatalog', myCatalogView);
 page('/search', searchView);
 */
