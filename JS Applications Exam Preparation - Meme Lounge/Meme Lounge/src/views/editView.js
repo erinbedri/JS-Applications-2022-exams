@@ -9,13 +9,13 @@ const editTemplate = (submitHandler, meme) => html`
                 <div class="container">
 
                     <label for="title">Title</label>
-                    <input id="title" type="text" placeholder=${meme.title} name="title">
+                    <input id="title" type="text" placeholder="Enter Title" value=${meme.title} name="title">
 
                     <label for="description">Description</label>
                     <textarea id="description" placeholder="Enter Description" name="description">${meme.description}</textarea>
 
                     <label for="imageUrl">Image Url</label>
-                    <input id="imageUrl" type="text" placeholder=${meme.imageUrl} name="imageUrl">
+                    <input id="imageUrl" type="text" placeholder="Enter Meme ImageUrl" value=${meme.imageUrl} name="imageUrl">
 
                     <input type="submit" class="registerbtn button" value="Edit Meme">
                 </div>
