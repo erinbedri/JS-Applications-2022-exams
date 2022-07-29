@@ -1,4 +1,4 @@
-import * as authService from './authService.js';
+import * as authService from '../services/authService.js';
 
 const request = (method, url, data) => {
     let options = {};
