@@ -2,18 +2,13 @@ import * as request from '../middleware/requester.js'
 
 const baseUrl = 'http://localhost:3030';
 
-/*
+
 const api = {
-    getAll: '/data/cars?sortBy=_createdOn%20desc',
-    create: '/data/cars',
-    getOne: (id) => `/data/cars/${id}`,
-    getAllMyListings: (id) => `/data/cars?where=_ownerId%3D%22${id}%22&sortBy=_createdOn%20desc`,
-    edit: (id) => `/data/cars/${id}`,
-    delete: (id) => `/data/cars/${id}`,
-    search: (query) => `/data/cars?where=year%3D${query}`
+    getAll: '/data/theaters?sortBy=_createdOn%20desc&distinct=title',
 }
 
 export const getAll = () => request.get(baseUrl + api.getAll);
+/*
 
 export const getAllMyListings = (userId) => request.get(baseUrl + api.getAllMyListings(userId));
 

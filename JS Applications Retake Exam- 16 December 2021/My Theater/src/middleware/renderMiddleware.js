@@ -2,7 +2,7 @@ import { render } from '../../node_modules/lit-html/lit-html.js';
 import { navigationView } from '../views/navigationView.js';
 
 const headerElement = document.getElementById('navigation');
-const contentElement = document.getElementById('site-content');
+const contentElement = document.getElementById('content');
 
 const renderContext = (templateResult) => {
     render(templateResult, contentElement);
