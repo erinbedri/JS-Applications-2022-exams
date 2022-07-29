@@ -2,6 +2,12 @@ import * as request from '../middleware/requester.js';
 
 const baseUrl = 'http://localhost:3030';
 
+const api = {
+    login: '/users/login',
+    register: '/users/register',
+    logout: '/users/logout'
+}
+
 export const getUser = () => {
     let serializedUser = localStorage.getItem('user');
 
@@ -23,7 +29,7 @@ export const getToken = () => {
 }
 
 export const login = (email, password) =>
-    request.post(`${baseUrl}/users/login`, { email, password })
+    request.post(baseUrl + api.login, { email, password })
         .then(user => {
             saveUser(user);
 
@@ -31,7 +37,7 @@ export const login = (email, password) =>
         })
 
 export const register = (email, password) =>
-    request.post(`${baseUrl}/users/register`, { email, password })
+    request.post(baseUrl + api.register, { email, password })
         .then(user => {
             saveUser(user);
 
@@ -39,7 +45,7 @@ export const register = (email, password) =>
         });
 
 export const logout = () => {
-    fetch(`${baseUrl}/users/logout`, { headers: { 'X-Authorization': getToken() } })
+    fetch(baseUrl + api.logout, { headers: { 'X-Authorization': getToken() } })
         .then(() => {
             localStorage.removeItem('user');
         })
