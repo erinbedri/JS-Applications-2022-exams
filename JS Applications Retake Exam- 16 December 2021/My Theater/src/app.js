@@ -9,10 +9,12 @@ import { registerView } from './views/registerView.js';
 import { logoutView } from './views/logoutView.js';
 import { createView } from './views/createView.js';
 import { detailsView } from './views/detailsView.js';
-/*
-import { catalogView } from './views/catalogView.js';
 import { editView } from './views/editView.js';
 import { deleteView } from './views/deleteView.js';
+import { profileView } from './views/profileView.js';
+
+/*
+import { catalogView } from './views/catalogView.js';
 import { myCatalogView } from './views/myCatalogView.js';
 import { searchView } from './views/searchView.js';
 */
@@ -27,10 +29,10 @@ page('/register', registerView);
 page('/logout', logoutView);
 page('/create', createView);
 page('/details/:id', detailsView);
-/*
-page('/catalog', catalogView);
 page('/edit/:id', editView);
 page('/delete/:id', deleteView);
+page('/profile', profileView);
+/*
 page('/myCatalog', myCatalogView);
 page('/search', searchView);
 */

@@ -15,7 +15,7 @@ const detailsTemplate = (user, event) => html`
         <section id="detailsPage">
             <div id="detailsBox">
                 <div class="detailsInfo">
-                    <h1>Title: ${event.name}</h1>
+                    <h1>Title: ${event.title}</h1>
                     <div>
                         <img src=${event.imageUrl} />
                     </div>
