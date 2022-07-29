@@ -22,16 +22,16 @@ export const getToken = () => {
     return getUser()?.accessToken;
 }
 
-export const login = (username, password) =>
-    request.post(`${baseUrl}/users/login`, { username, password })
+export const login = (email, password) =>
+    request.post(`${baseUrl}/users/login`, { email, password })
         .then(user => {
             saveUser(user);
 
             return user;
         })
 
-export const register = (username, password) =>
-    request.post(`${baseUrl}/users/register`, { username, password })
+export const register = (email, password) =>
+    request.post(`${baseUrl}/users/register`, { email, password })
         .then(user => {
             saveUser(user);
 

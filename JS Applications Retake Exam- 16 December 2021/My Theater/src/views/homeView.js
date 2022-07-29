@@ -51,4 +51,7 @@ export const homeView = (ctx) => {
         .then(events => {
             ctx.render(homeTemplate(events))
         })
+        .catch(err => {
+            alert(err);
+        })
 }
