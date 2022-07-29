@@ -1,4 +1,4 @@
-import * as request from './requester.js'
+import * as request from './requester.js.js'
 
 const baseUrl = 'http://localhost:3030';
 
