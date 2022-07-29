@@ -7,11 +7,11 @@ const userConstrols = (eventId) => html`
                         <a class="btn-edit" href="/edit/${eventId}">Edit</a>
 `;
 
-const likeControl = (eventId) => html`
-                        <a class="btn-like" href="/like/${eventId}">Like</a>
+const likeControl = (ctx) => html`
+                        <a @click=${onClick(ctx)} class="btn-like" href="#">Like</a>
 `;
 
-const detailsTemplate = (user, event) => html`
+const detailsTemplate = (ctx, event, likes, hasLiked) => html`
         <section id="detailsPage">
             <div id="detailsBox">
                 <div class="detailsInfo">
@@ -27,27 +27,57 @@ const detailsTemplate = (user, event) => html`
                     <h4>Date: ${event.date}</h4>
                     <h4>Author: ${event.author}</h4>
                     <div class="buttons">
-                        ${user && user._id === event._ownerId
+
+                        ${ctx.user && ctx.user._id === event._ownerId
                             ? userConstrols(event._id)
                             : nothing
                         }
-                        ${user && user._id !== event._ownerId
-                            ? likeControl(event._id)
+                        ${ctx.user && ctx.user._id !== event._ownerId && !hasLiked
+                            ? likeControl(ctx)
                             : nothing
                         }
 
                     </div>
-                    <p class="likes">Likes: ${event.likes}</p>
+                    <p class="likes">Likes: ${likes}</p>
                 </div>
             </div>
         </section>
 `;
 
 export const detailsView = (ctx) => {
+    let likes;
+    eventService.getLikesOfEvent(ctx.params.id)
+        .then(count => {
+            likes = count;
+        })
+        .catch(err => {
+            alert(err);
+        })
+
+    let hasLiked = false;
+    if (ctx.user) {
+        eventService.hasLiked(ctx.user._id, ctx.params.id)
+            .then(result => {
+                hasLiked = result;
+            })
+            .catch(err => {
+                alert(err);
+            })
+    }
+
     eventService.getOne(ctx.params.id)
         .then(event => {
-            ctx.render(detailsTemplate(ctx.user, event));
+            ctx.render(detailsTemplate(ctx, event, likes, hasLiked));
         })
+        .catch(err => {
+            alert(err);
+        })
+}
+
+const onClick = (ctx) => {
+    let eventId = ctx.params.id;
+
+    eventService.like(eventId)
         .catch(err => {
             alert(err);
         })
